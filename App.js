@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import Contas from './rotasTelas/telaMenu/Menu';
+import Saldo from './rotasTelas/telaSaldo/Saldo';
+import Extrato from './rotasTelas/telaExtrato/Extrato';
+import MarcoPolo from './rotasTelas/telaMarcoPolo/MarcoPolo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
+
 
 export default function App() {
+  const PilhaTelas = createStackNavigator();
+
+
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <PilhaTelas.Navigator>
+        <PilhaTelas.Screen name='telaMenu' component={Contas} />
+        <PilhaTelas.Screen name='telaSaldo' component={Saldo} />
+        <PilhaTelas.Screen name='telaExtrato' component={Extrato} />
+        <PilhaTelas.Screen name='telaMarcoPolo' component={MarcoPolo} />
+      </PilhaTelas.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
